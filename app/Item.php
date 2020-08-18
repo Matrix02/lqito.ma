@@ -15,7 +15,7 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'title', 'body', 'image', 'location', 'recompense', 'is_found', 'is_published'
+        'title', 'body', 'image', 'location', 'recompense', 'is_found', 'is_published', 'category_id', 'region_id'
     ];
 
     /**
@@ -35,4 +35,19 @@ class Item extends Model
     protected $casts = [
       
     ];
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class, 'item_tag');
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function region(){
+        return $this->belongsTo(Region::class);
+    }
 }

@@ -15,6 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->mediumText('body');
             $table->string('image');
@@ -22,6 +23,8 @@ class CreateItemsTable extends Migration
             $table->integer('recompense');
             $table->boolean('is_found');
             $table->boolean('is_published');
+            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('region_id')->references('id')->on('regions');
             $table->timestamps();
         });
     }

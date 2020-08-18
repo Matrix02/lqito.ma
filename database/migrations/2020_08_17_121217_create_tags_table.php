@@ -15,8 +15,16 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
+            $table->string('label')->unique();
             $table->timestamps();
+        });
+        //this is a pivot table betweeb tags & items
+        Schema::create('item_tag', function (Blueprint $table) {
+            // $table->increments('id');
+            $table->integer('item_id');
+            $table->integer('tag_id');
+            $table->primary(['item_id', 'tag_id']);
+
         });
     }
 
@@ -28,5 +36,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('item_tag');
     }
 }

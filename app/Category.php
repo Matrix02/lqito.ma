@@ -15,7 +15,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'label'
+        'label', 'parent_id'
     ];
 
     /**
@@ -35,4 +35,14 @@ class Category extends Model
     protected $casts = [
 
     ];
+
+    public function children()
+    {
+      return $this->hasMany('App\Category', 'parent_id');
+    }
+
+    public function item()
+    {
+        return $this->hasMany('App\Item');
+    }
 }

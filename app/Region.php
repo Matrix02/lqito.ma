@@ -15,7 +15,7 @@ class Region extends Model
      * @var array
      */
     protected $fillable = [
-        'label'
+        'label', 'parent_id'
     ];
 
     /**
@@ -35,4 +35,14 @@ class Region extends Model
     protected $casts = [
         
     ];
+
+    public function children()
+    {
+      return $this->hasMany('App\Region', 'parent_id');
+    }
+
+    public function item()
+    {
+        return $this->hasMany('App\Item');
+    }
 }

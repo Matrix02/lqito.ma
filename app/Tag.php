@@ -35,4 +35,8 @@ class Tag extends Model
     protected $casts = [
 
     ];
+
+    public function item(){
+       return $this->belongsToMany(Item::class, 'item_tag'); 
+    }
 }
