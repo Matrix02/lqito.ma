@@ -20,9 +20,8 @@ class CreateTagsTable extends Migration
         });
         //this is a pivot table betweeb tags & items
         Schema::create('item_tag', function (Blueprint $table) {
-            // $table->increments('id');
-            $table->integer('item_id');
-            $table->integer('tag_id');
+            $table->foreignId('tag_id')->constrained();
+            $table->foreignId('item_id')->constrained();
             $table->primary(['item_id', 'tag_id']);
 
         });
