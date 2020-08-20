@@ -25,6 +25,7 @@ class CreateItemsTable extends Migration
             $table->boolean('is_published');
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('region_id')->references('id')->on('regions');
+            $table->enum('listing_type', ['lost', 'found']);
             $table->timestamps();
         });
     }
