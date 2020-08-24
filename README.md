@@ -1,4 +1,4 @@
-<p align="center"><img src="https://lqito.ma/images/bg01.jpg" width="400"></p>
+<p align="center"><img src="https://lqito.ma/images/bg01.jpg" width="auto"></p>
 
 
 ## About The Project
