@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Region;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class RegionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('children')->whereNull('parent_id')->get();
+        $region = Region::with('children')->whereNull('parent_id')->get();
 
-        return response()->json($categories, 201);
+        return response()->json($region, 201);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,7 +42,7 @@ class CategoryController extends Controller
             'parent_id' => 'sometimes|nullable|numeric'
       ]);
 
-      Category::create($validatedData);
+      Region::create($validatedData);
 
       return response()->json( 201);
     }
@@ -45,6 +54,17 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
