@@ -15,7 +15,7 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'body', 'image', 'location', 'recompense', 'is_found', 'is_published', 'category_id', 'region_id'
+        'title', 'body', 'image', 'location', 'recompense', 'is_found', 'is_published', 'category_id', 'region_id', 'user_id', 'listing_type'
     ];
 
     /**
