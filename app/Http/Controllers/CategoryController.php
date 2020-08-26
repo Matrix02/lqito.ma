@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
 
-        return response()->json($categories, 201);
+        return response()->json($categories, 200);
     }
 
 
@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
       Category::create($validatedData);
 
-      return response()->json( 201);
+      return response()->json(201);
     }
 
     /**

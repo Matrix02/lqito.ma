@@ -14,7 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return 'are you working'; 
+
 });
 
-Route::resource('category', 'CategoryController');
+// Route::resource('category', 'CategoryController');
+Route::get('category', 'CategoryController@index');
+Route::post('category/new', 'CategoryController@store');
+
+
+//User Routes
+Route::post('signin', 'UserController@store');
+Route::get('users', 'UserController@index');
+
+
+
+

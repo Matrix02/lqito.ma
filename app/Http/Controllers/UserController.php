@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -26,19 +27,36 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $this->validate($request, [
-            'name' => 'required|min:5|max:255|string',
-            'email' => 'required|email|string|min:7|max:255|unique:users',
-            'password'         => 'required|min:6|max:255|string',
-            'password_confirm' => 'required|same:password',
-            'phone' => 'required|min:10|numeric',
-            'image' => 'image|mimes:jpeg,jpg,png,gif|required|max:10000',
-            'role_id' => 'required|exists:role,id'
-        ]);
+        try {
+            $this->validate($request, [
+                'name' => 'required|min:5|max:255|string',
+                'email' => 'required|email|string|min:7|max:255|unique:users',
+                'password'         => 'required|min:6|max:255|string',
+                'phone' => 'required|min:10|max:255|numeric',
+                'image' => 'image|mimes:jpeg,jpg,png,gif|required|max:10000',
+                'role_id' => 'required'
+            ]);
+        } catch (\Throwable $th) {
+           
+        }
 
-        $user = User::created($validatedData);
+        
+        // dd($request);
+        // $user = User::created($request);
+        // return response()->json($user, 201);
+        $user = new User();
+    
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->phone = $request->phone;
+        $user->image = $request->image;
+        $user->role()->associate($request->role_id);
+        $user->save();
+        
 
         return response()->json($user, 201);
+        
     }
 
     /**
