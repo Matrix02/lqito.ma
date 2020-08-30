@@ -29,5 +29,8 @@ Route::post('signin', 'UserController@store');
 Route::get('users', 'UserController@index');
 
 
+//item routes
+Route::post('item' , 'ItemController@store');
 
-
+//Tag routes
+Route::post('tag' , 'TagController@store');

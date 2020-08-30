@@ -28,7 +28,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->validate($request, [
+            $this->request->validate([
+            
                 'name' => 'required|min:5|max:255|string',
                 'email' => 'required|email|string|min:7|max:255|unique:users',
                 'password'         => 'required|min:6|max:255|string',
@@ -39,11 +40,6 @@ class UserController extends Controller
         } catch (\Throwable $th) {
            
         }
-
-        
-        // dd($request);
-        // $user = User::created($request);
-        // return response()->json($user, 201);
         $user = new User();
     
         $user->name = $request->name;
