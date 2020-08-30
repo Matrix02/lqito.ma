@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Item extends Model
 {
+    use Searchable;
+
     use Notifiable;
 
     /**

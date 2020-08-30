@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Item;
-use App\User;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -76,9 +75,18 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function search(Request $request)
     {
-        //
+        if ($request->has('q')) {
+            $q = $request->q  ;
+    
+            $items = item::search($q)->get();
+           
+        
+            return $items;
+        } else {
+            return response()->json('not found');
+        }
     }
 
     /**

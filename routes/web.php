@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,6 @@ Route::post('item' , 'ItemController@store');
 
 //Tag routes
 Route::post('tag' , 'TagController@store');
+
+
+Route::get('search', 'ItemController@search');
