@@ -78,11 +78,11 @@ class ItemController extends Controller
     public function search(Request $request)
     {
         if ($request->has('q')) {
-            $q = $request->q  ;
+            $q = $request->q;
     
             $items = item::search($q)->get();
            
-        
+
             return $items;
         } else {
             return response()->json('not found');
