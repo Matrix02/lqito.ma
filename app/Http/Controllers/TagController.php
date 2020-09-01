@@ -12,9 +12,12 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tag $tag)
     {
-        //
+        $items = $tag->item;
+
+        return response()->json($items, 200);
+ 
     }
 
     /**

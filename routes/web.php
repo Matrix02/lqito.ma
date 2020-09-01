@@ -35,6 +35,7 @@ Route::post('item' , 'ItemController@store');
 
 //Tag routes
 Route::post('tag' , 'TagController@store');
-
+Route::get('items/tags/{tag}' , 'TagController@index');
 
 Route::get('search', 'ItemController@search');
+

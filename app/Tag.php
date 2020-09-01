@@ -36,6 +36,11 @@ class Tag extends Model
 
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'label';
+    }
+
     public function item(){
        return $this->belongsToMany(Item::class, 'item_tag'); 
     }
