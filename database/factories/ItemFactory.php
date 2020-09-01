@@ -7,11 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Item::class, function (Faker $faker) {
     return [
-            'title' => $faker->title,
+            'title' => $faker->sentence(4),
             'body' => $faker->paragraph,
-            'image' => $faker->image,
-            'location' => $faker->locale,
-            'recompense' => $faker->randomDigit(null, 5000),
+            'image' => $faker->imageUrl($width = 640, $height = 480),
+            'location' => $faker->address,
+            'recompense' => $faker->numberBetween($min = null, $max = 5000),
             'is_found' => $faker->boolean(20),
             'is_published' => $faker->boolean(80),
             'category_id' => factory(App\Category::class),
